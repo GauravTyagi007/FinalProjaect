@@ -1,9 +1,6 @@
 package com.foodApp.FoodApp.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -11,14 +8,15 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class FoodProduct {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String type;
 	private String about;
 	private String availability;
-	private double price;
+	private int price;
 	
-	@JsonManagedReference
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn
 	private Menu menu;
@@ -56,7 +54,7 @@ public class FoodProduct {
 	public double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	@Override
@@ -64,7 +62,7 @@ public class FoodProduct {
 		return "foodProduct [id=" + id + ", name=" + name + ", type=" + type + ", about=" + about + ", availability="
 				+ availability + ", price=" + price + "]";
 	}
-	public FoodProduct(int id, String name, String type, String about, String availability, double price) {
+	public FoodProduct(int id, String name, String type, String about, String availability, int price) {
 		super();
 		this.id = id;
 		this.name = name;

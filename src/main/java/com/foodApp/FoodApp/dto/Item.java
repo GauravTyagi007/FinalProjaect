@@ -1,30 +1,26 @@
 package com.foodApp.FoodApp.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.*;
 
 @Entity
 public class Item {
 	
 	@Id
-	private int productId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int Id;
 	private String name;
 	private String type;
 	private int quantity;
 	private double price;
 	
-	@JsonBackReference
+	//@JsonBackReference
 	@ManyToOne
 	@JoinColumn
 	private FoodOrder foodOrder;
 	
-	public Item(int productId, String name, String type, int quantity, double price, FoodOrder foodOrder) {
+	public Item(int Id, String name, String type, int quantity, double price, FoodOrder foodOrder) {
 		super();
-		this.productId = productId;
+		this.Id = Id;
 		this.name = name;
 		this.type = type;
 		this.quantity = quantity;
@@ -37,11 +33,11 @@ public class Item {
 	public void setFoodOrder(FoodOrder foodOrder) {
 		this.foodOrder = foodOrder;
 	}
-	public int getProductId() {
-		return productId;
+	public int getId() {
+		return Id;
 	}
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setId(int id) {
+		this.Id = id;
 	}
 	public String getName() {
 		return name;
