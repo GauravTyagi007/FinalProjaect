@@ -2,10 +2,7 @@ package com.foodApp.FoodApp.dto;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -13,18 +10,19 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class User {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
     private String name;
     private String email;
     private  String password;
     private String role;
     
-    @JsonManagedReference
-    @OneToOne
+    //@JsonManagedReference
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Menu menu;
     
-    @JsonManagedReference
-    @OneToMany(mappedBy = "user")
+    //@JsonManagedReference
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     List<FoodOrder> foodOrder;
     
     @Override
