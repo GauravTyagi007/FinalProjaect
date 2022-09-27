@@ -6,12 +6,16 @@ import com.foodApp.FoodApp.dto.User;
 import com.foodApp.FoodApp.services.EmailServiceImplementation;
 import com.foodApp.FoodApp.services.FoodOrderService;
 import com.foodApp.FoodApp.services.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value="/foodOrder")
+@Api(value="FoodOrder",description="foodOrder CRUD operations")
 public class FoodOrderController {
 
     @Autowired
@@ -23,20 +27,24 @@ public class FoodOrderController {
     @Autowired
     private EmailServiceImplementation emailServiceImplementation;
 
-    @GetMapping("/order/{id}")
+    @ApiOperation(value="Get list of all order")
+    @GetMapping(value="/order/{id}")
     public List<FoodOrder> getOrderByUserId(@PathVariable("id") int id)
     {
         User user=userService.getUserById(id);
         return user.getFoodOrder();
     }
-    @PostMapping("/addOrder/{id}")
+
+    @ApiOperation(value="Add order by id")
+    @PostMapping(value="/addOrder/{id}")
     public FoodOrder addOrder(@RequestBody FoodOrder order, @PathVariable("id") int user_id) {
         User user = userService.getUserById(user_id);
         order.setUser(user);
         return foodOrderService.addOrder(order);
     }
 
-    @PutMapping("/updateOrder/{id}")
+    @ApiOperation(value="Update order by id")
+    @PutMapping(value="/updateOrder/{id}")
     public FoodOrder updateOrder(@RequestBody FoodOrder order,@PathVariable("id") int id) {
         FoodOrder updated_order=foodOrderService.updateOrder(order);;
         User user=userService.getUserById(id);
@@ -48,12 +56,14 @@ public class FoodOrderController {
         return updated_order;
     }
 
-    @DeleteMapping("/delete/order/{id}")
+    @ApiOperation(value="delete order by id")
+    @DeleteMapping(value="/delete/order/{id}")
     public String deleteOrder(@PathVariable("id") int id) {
         return foodOrderService.deleteOrder(id);
     }
 
-    @GetMapping("getOrderById/{id}")
+    @ApiOperation(value="Get order by id")
+    @GetMapping(value="getOrderById/{id}")
     public FoodOrder getOrderByOrderId(@PathVariable("id") int id) {
         return foodOrderService.getFoodOrderById(id);
     }
