@@ -3,9 +3,11 @@ package com.foodApp.FoodApp.dao;
 import com.foodApp.FoodApp.dto.FoodProduct;
 import com.foodApp.FoodApp.repository.FoodProdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class FoodProductDao {
 
     @Autowired
@@ -19,7 +21,7 @@ public class FoodProductDao {
         foodProdRepository.deleteById(id);
     }
 
-    public List<FoodProduct> getProduct() {
+    public List<FoodProduct> getAllProduct() {
         return foodProdRepository.findAll();
     }
 

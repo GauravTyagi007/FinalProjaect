@@ -17,11 +17,11 @@ public class User {
     private  String password;
     private String role;
     
-    //@JsonManagedReference
+    @JsonManagedReference
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Menu menu;
     
-    //@JsonManagedReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     List<FoodOrder> foodOrder;
     

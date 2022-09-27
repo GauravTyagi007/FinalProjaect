@@ -3,9 +3,11 @@ package com.foodApp.FoodApp.dao;
 import com.foodApp.FoodApp.dto.Menu;
 import com.foodApp.FoodApp.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class MenuDao {
 
     @Autowired
