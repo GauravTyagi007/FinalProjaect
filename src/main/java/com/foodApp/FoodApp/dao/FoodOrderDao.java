@@ -3,7 +3,9 @@ package com.foodApp.FoodApp.dao;
 import com.foodApp.FoodApp.dto.FoodOrder;
 import com.foodApp.FoodApp.repository.FoodOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class FoodOrderDao {
 
     @Autowired

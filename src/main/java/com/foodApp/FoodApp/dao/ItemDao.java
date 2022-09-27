@@ -3,9 +3,11 @@ package com.foodApp.FoodApp.dao;
 import com.foodApp.FoodApp.dto.Item;
 import com.foodApp.FoodApp.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class ItemDao {
 
     @Autowired

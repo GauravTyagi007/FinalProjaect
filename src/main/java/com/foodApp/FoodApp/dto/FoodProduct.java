@@ -2,6 +2,7 @@ package com.foodApp.FoodApp.dto;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -16,61 +17,78 @@ public class FoodProduct {
 	private String availability;
 	private int price;
 	
-	//@JsonManagedReference
-	@ManyToOne
-	@JoinColumn
+	@JsonBackReference
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "menu_id",referencedColumnName = "id")
 	private Menu menu;
+
+	public FoodProduct(int id, String name, String type, String about, String availability, int price, Menu menu) {
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.about = about;
+		this.availability = availability;
+		this.price = price;
+		this.menu = menu;
+	}
 
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getType() {
 		return type;
 	}
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	public String getAbout() {
 		return about;
 	}
+
 	public void setAbout(String about) {
 		this.about = about;
 	}
+
 	public String getAvailability() {
 		return availability;
 	}
+
 	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
-	public double getPrice() {
+
+	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	@Override
-	public String toString() {
-		return "foodProduct [id=" + id + ", name=" + name + ", type=" + type + ", about=" + about + ", availability="
-				+ availability + ", price=" + price + "]";
+
+	public Menu getMenu() {
+		return menu;
 	}
-	public FoodProduct(int id, String name, String type, String about, String availability, int price) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.type = type;
-		this.about = about;
-		this.availability = availability;
-		this.price = price;
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
+
+
 	public FoodProduct() {
 		super();
 		// TODO Auto-generated constructor stub

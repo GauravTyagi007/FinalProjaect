@@ -3,11 +3,12 @@ package com.foodApp.FoodApp.dao;
 import com.foodApp.FoodApp.dto.User;
 import com.foodApp.FoodApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Repository
 public class UserDao {
 
     @Autowired
@@ -69,5 +70,21 @@ public class UserDao {
     {
         return userRepository.getByEmail(email);
     }
+
+    public User userLogin(User user)
+    {
+        User isPresent=getByEmail(user.getEmail().toLowerCase());
+        if(isPresent==null)
+        {
+            return isPresent;
+        }
+        if(PasswordEncryption.verifyUserPassword(user.getPassword(),isPresent.getPassword().substring(30),isPresent.getPassword().substring(0,30)))
+        {
+            return isPresent;
+        }
+        return null;
+    }
+
+
 
 }

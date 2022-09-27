@@ -1,5 +1,7 @@
 package com.foodApp.FoodApp.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +15,8 @@ public class Item {
 	private int quantity;
 	private double price;
 	
-	//@JsonBackReference
-	@ManyToOne
+	@JsonBackReference
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn
 	private FoodOrder foodOrder;
 	

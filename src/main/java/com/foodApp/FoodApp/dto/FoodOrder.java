@@ -1,5 +1,8 @@
 package com.foodApp.FoodApp.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 import java.util.List;
 
@@ -19,12 +22,12 @@ public class FoodOrder {
 
 	private int totalPrice;
 
-	//@JsonBackReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn()
 	private User user;
 
-	//@JsonManagedReference
+	@JsonManagedReference
 	@OneToMany(mappedBy = "foodOrder", cascade = CascadeType.ALL)
 	List<Item> items;
 
