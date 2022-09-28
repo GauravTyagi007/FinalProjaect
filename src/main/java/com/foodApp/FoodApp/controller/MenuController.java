@@ -25,19 +25,19 @@ public class MenuController {
         return menuService.getAllMenu();
     }
 
-    @GetMapping("/getMenus/{id}")
+    @GetMapping("/getMenusById/{id}")
     public Menu getMenuById(@PathVariable("id") int id)
     {
         return menuService.getMenuById(id);
     }
 
-    @DeleteMapping("/getMenus/{id}")
+    @DeleteMapping("/deleteMenus/{id}")
     public void deleteMenu(@PathVariable("id") int id)
     {
         menuService.deleteMenu(id);
     }
 
-    @PostMapping("/addMenu/{id}")
+    @PostMapping("/addMenuWithUserId/{id}")
     public Menu addMenu(@RequestBody Menu menu,@PathVariable("id") int id)
     {
         User user=userService.getUserById(id);

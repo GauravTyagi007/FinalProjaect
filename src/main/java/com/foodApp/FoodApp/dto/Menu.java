@@ -14,14 +14,14 @@ public class Menu {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	//@JsonManagedReference
-	@OneToMany(mappedBy = "menu" ,cascade = CascadeType.ALL)
+	@JsonManagedReference
+	@OneToMany(mappedBy = "menu" ,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	List<FoodProduct> foodproducts;
 
 
 
 	@JsonBackReference
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn
 	private User user;
 

@@ -5,7 +5,8 @@ public class Email {
     private String recipient;
     private String msgBody;
     private String subject;
-    public String getRecipient() {
+    public String getRecipient()
+    {
         return recipient;
     }
     public void setRecipient(String recipient) {

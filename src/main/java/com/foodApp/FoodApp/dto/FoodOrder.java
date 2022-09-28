@@ -28,7 +28,7 @@ public class FoodOrder {
 	private User user;
 
 	@JsonManagedReference
-	@OneToMany(mappedBy = "foodOrder", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "foodOrder", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	List<Item> items;
 
 	public FoodOrder(int id, boolean status, String orderCreatetime, String orderDeliverytime, String customerName, int contactNumber, int totalPrice, User user, List<Item> items) {
