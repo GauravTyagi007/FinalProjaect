@@ -4,24 +4,17 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 public class FoodProduct {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ApiModelProperty(notes="foodProduct id",required = true)
 	private int id;
-	@ApiModelProperty(notes="foodProduct name",required = true)
 	private String name;
-	@ApiModelProperty(notes="foodProduct type",required = true)
 	private String type;
-	@ApiModelProperty(notes="about foodProduct",required = true)
 	private String about;
-	@ApiModelProperty(notes="foodProduct availability",required = true)
 	private String availability;
-	@ApiModelProperty(notes="foodProduct price",required = true)
 	private int price;
 	
 	@JsonBackReference

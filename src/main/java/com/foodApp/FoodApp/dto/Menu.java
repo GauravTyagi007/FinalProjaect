@@ -6,14 +6,12 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 public class Menu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@ApiModelProperty(notes="menu id",required = true)
 	private int id;
 
 	//@JsonManagedReference
