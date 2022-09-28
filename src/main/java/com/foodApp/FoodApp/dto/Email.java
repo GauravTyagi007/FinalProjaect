@@ -1,9 +1,15 @@
 package com.foodApp.FoodApp.dto;
 
+
+import io.swagger.annotations.ApiModelProperty;
+
 public class Email {
 
+    @ApiModelProperty(notes="email recipient",required = true)
     private String recipient;
+    @ApiModelProperty(notes="email msgBody",required = true)
     private String msgBody;
+    @ApiModelProperty(notes="email subject",required = true)
     private String subject;
     public String getRecipient() {
         return recipient;
