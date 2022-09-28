@@ -5,16 +5,13 @@ import com.foodApp.FoodApp.dto.Menu;
 import com.foodApp.FoodApp.dto.User;
 import com.foodApp.FoodApp.services.FoodProductService;
 import com.foodApp.FoodApp.services.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value="/foodProduct")
-@Api(value="foodProduct",description="foodProduct CRUD operations")
+@RequestMapping("/foodProduct")
 public class FoodProductController {
 
     @Autowired
@@ -24,8 +21,7 @@ public class FoodProductController {
     UserService userService;
 
 
-    @ApiOperation(value="Add product by userId")
-    @PostMapping(value="/addProduct/{user_id}")
+    @PostMapping("/addProduct/{user_id}")
     public FoodProduct addProduct(@RequestBody FoodProduct product , @PathVariable int user_id) {
         User user = userService.getUserById(user_id);
         Menu menu=user.getMenu();
@@ -33,20 +29,17 @@ public class FoodProductController {
         return foodProductService.addProduct(product);
     }
 
-    @ApiOperation(value="Delete product by id")
-    @DeleteMapping(value="/deleteProduct/{id}")
+    @DeleteMapping("/deleteProduct/{id}")
     public void deleteProduct(@PathVariable("id") int id) {
         foodProductService.deleteProduct(id);
     }
 
-    @ApiOperation(value="Get list of All products")
-    @GetMapping(value="/getProduct")
+    @GetMapping("/getProduct")
     public List<FoodProduct> getProduct() {
         return foodProductService.getAllProduct();
     }
 
-    @ApiOperation(value="Update product")
-    @PutMapping(value="/updateProduct")
+    @PutMapping("/updateProduct")
     public FoodProduct updateProduct(@RequestBody FoodProduct product) {
         return foodProductService.updateProduct(product);
     }
