@@ -18,11 +18,11 @@ public class User {
     private String role;
     
     @JsonManagedReference
-    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Menu menu;
     
     @JsonManagedReference
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     List<FoodOrder> foodOrder;
     
     @Override

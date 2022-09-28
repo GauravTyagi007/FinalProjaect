@@ -16,7 +16,7 @@ public class Item {
 	private double price;
 	
 	@JsonBackReference
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn
 	private FoodOrder foodOrder;
 	

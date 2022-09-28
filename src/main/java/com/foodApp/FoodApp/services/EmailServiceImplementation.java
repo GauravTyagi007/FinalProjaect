@@ -36,6 +36,7 @@ public class EmailServiceImplementation implements EmailService{
 
             // Sending the mail
             javaMailSender.send(mailMessage);
+
             return "Mail Has Been Sent Successfully";
         }
 

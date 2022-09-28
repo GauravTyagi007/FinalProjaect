@@ -22,6 +22,7 @@ public class FoodOrderDao {
         FoodOrder foodOrder = getOrderById(order.getId());
         foodOrder.setTotalPrice(order.getTotalPrice());
         foodOrder.setOrderDeliverytime(new java.util.Date() + "");
+        foodOrder.setContactNumber(order.getContactNumber());
         foodOrder.setStatus(true);
         return foodOrderRepository.save(foodOrder);
     }
