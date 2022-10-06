@@ -43,6 +43,9 @@ public class UserService {
         return userDao.userLogin(user);
     }
 
-
+    public User updateByManager(int user_id, String role) {
+        // TODO Auto-generated method stub
+        return userDao.updateByManager(user_id,role);
+    }
 
 }
