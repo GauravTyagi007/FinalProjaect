@@ -52,10 +52,7 @@ public class UserDao {
         user.setName(updated_user.getName());
         user.setPassword(password);
         if(updated_user.getRole()!=null)
-        {
             user.setRole(updated_user.getRole());
-
-        }
         return userRepository.save(user);
     }
 
@@ -73,16 +70,19 @@ public class UserDao {
 
     public User userLogin(User user)
     {
-        User isPresent=getByEmail(user.getEmail().toLowerCase());
-        if(isPresent==null)
-        {
-            return isPresent;
-        }
-        if(PasswordEncryption.verifyUserPassword(user.getPassword(),isPresent.getPassword().substring(30),isPresent.getPassword().substring(0,30)))
-        {
-            return isPresent;
-        }
+        User existing=getByEmail(user.getEmail().toLowerCase());
+        System.out.println(existing);
+        if(existing==null)
+            return existing;
+        if(PasswordEncryption.verifyUserPassword(user.getPassword(),existing.getPassword().substring(30),existing.getPassword().substring(0,30)))
+            return existing;
         return null;
+    }
+    public User updateByManager(int user_id, String role) {
+        // TODO Auto-generated method stub
+        User user=getById(user_id);
+        user.setRole(role);
+        return userRepository.save(user);
     }
 
 
