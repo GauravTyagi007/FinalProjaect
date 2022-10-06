@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+//@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("/loginUser")
-    public User userLogin(User user)
+    public User userLogin(@RequestBody User user)
     {
         return userService.userLogin(user);
     }
@@ -57,6 +57,11 @@ public class UserController {
         Menu menu=new Menu();
         menuController.addMenu(menu, user.getId());
         return user;
+    }
+
+    @PutMapping("/updatebymanager/{user_id}/{role}")
+    public User updateByManager(@PathVariable("user_id") int user_id,@PathVariable("role") String role) {
+        return userService.updateByManager(user_id,role);
     }
 
 

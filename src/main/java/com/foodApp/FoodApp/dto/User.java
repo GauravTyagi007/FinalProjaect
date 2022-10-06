@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@JsonIgnoreType
 public class User {
 
 	@Id
@@ -17,12 +19,13 @@ public class User {
     private  String password;
     private String role;
     
-    @JsonManagedReference
-    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    //@JsonManagedReference
+	@JsonManagedReference
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     private Menu menu;
     
     @JsonManagedReference
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     List<FoodOrder> foodOrder;
     
     @Override
